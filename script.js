@@ -5,8 +5,8 @@ const cityName = document.getElementById("city-name")
 const cityTime = document.getElementById("city-time")
 const cityTemp = document.getElementById("city-temp")
 
-async function getData(cityname){
-    const promise = await fetch(`http://api.weatherapi.com/v1/current.json?key=c2f88823e8654f3197d81522251703&q=${cityname}&aqi=yes`);
+async function getData(cityName){
+    const promise = await fetch(`http://api.weatherapi.com/v1/current.json?key=c2f88823e8654f3197d81522251703&q=${cityName}&aqi=yes`);
     return await promise.json()
 }
 
