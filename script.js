@@ -5,10 +5,19 @@ const cityName = document.getElementById("city-name")
 const cityTime = document.getElementById("city-time")
 const cityTemp = document.getElementById("city-temp")
 
-async function getData(cityInfo){
-    const promise = await fetch(`http://api.weatherapi.com/v1/current.json?key=c2f88823e8654f3197d81522251703&q=${cityInfo}&aqi=yes`);
-    return await promise.json()
-}
+
+    async function getData(cityInfo) {
+        try {
+            const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=c2f88823e8654f3197d81522251703&q=${cityInfo}&aqi=yes`);
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status} - ${response.statusText}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error("Failed to fetch weather data:", error);
+            return null;
+        }
+    }
 
 btn.addEventListener("click", async () => {
     const value = input.value;
